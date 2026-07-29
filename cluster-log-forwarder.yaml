@@ -5,7 +5,7 @@ metadata:
   namespace: openshift-logging
 spec:
   serviceAccount:
-    name: log-collector   # PRE-REQ: create service account and assign cluster role (collect-audit-logs|collect-application-logs|collect-infrastructure-logs)
+    name: tt-log-forwarder   # PRE-REQ: create service account and assign cluster role (collect-audit-logs|collect-application-logs|collect-infrastructure-logs)
   ouputs:
     - name: external-loki
       type: loki
