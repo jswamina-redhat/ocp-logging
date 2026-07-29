@@ -1,0 +1,24 @@
+apiVersion: observability.openshift.io/v1
+kind: ClusterLogForwarder
+metadata:
+  name: log-to-loki
+  namespace: openshift-logging
+spec:
+  serviceAccount:
+    name: log-collector   # PRE-REQ: create service account and assign cluster role (collect-audit-logs|collect-application-logs|collect-infrastructure-logs)
+  ouputs:
+    - name: external-loki
+      type: loki
+      loki:
+        url: ''             # GET LOKI URL
+        authentication:
+          secret:
+            name: external-loki-secret    # PRE-REQ: Create secret with required credentials
+  pipelines:
+    - name: send-logs
+      inputRefs:
+        - application
+        - infrastructure
+        - audit
+      outputRefs:
+        - external-loki
