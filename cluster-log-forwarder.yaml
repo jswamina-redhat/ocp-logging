@@ -13,7 +13,7 @@ spec:
         url: ''             # GET LOKI URL
         authentication:
           secret:
-            name: external-loki-secret    # PRE-REQ: Create secret with required credentials
+            name: tt-loki-auth    # PRE-REQ: Create secret with required credentials
   pipelines:
     - name: send-logs
       inputRefs:
