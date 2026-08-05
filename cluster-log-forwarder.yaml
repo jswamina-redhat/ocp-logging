@@ -10,10 +10,10 @@ spec:
     - name: external-loki
       type: loki
       loki:
-        url: ''             # GET LOKI URL
+        url: 'https://logs-prod-006.grafana.net/loki/api/v1/push'
         authentication:
           secret:
-            name: tt-loki-auth    # PRE-REQ: Create secret with required credentials
+            name: tt-loki-auth    # PRE-REQ: Create secret with required credentials / Figure out how to implement w/ External Secrets Operator
   pipelines:
     - name: send-logs
       inputRefs:
